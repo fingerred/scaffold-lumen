@@ -1,4 +1,5 @@
 # Lumen PHP Framework scaffold
+> Lumen 版本信息：Lumen (8.2.1) (Laravel Components ^8.0)
 * ~~开启门面模式~~
 * ~~开启Eloquent ORM~~
 * ~~引入Redis组件~~
