@@ -4,3 +4,11 @@ Homestead.json
 Homestead.yaml
 .env
 .phpunit.result.cache
+.*.yml
+.*.swp
+*.log
+.DS_Store
+.phpstorm.*
+.vscode/
+bootstrap/cache/
+sftp-config.json
