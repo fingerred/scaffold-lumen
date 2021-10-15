@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /**
  * Create by Red.jiang in 10/15/21 at 4:14 PM
@@ -7,7 +6,7 @@ declare(strict_types=1);
  * Email redmadfinger@gmail.com
  */
 
-namespace App\Functions;
+namespace App\Functions\ErrorCode;
 
 class CommonErrorCode
 {

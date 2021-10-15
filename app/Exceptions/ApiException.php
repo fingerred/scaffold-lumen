@@ -8,12 +8,15 @@
 
 namespace App\Exceptions;
 
+use App\Functions\ErrorCode\CommonErrorCode;
 
 class ApiException extends \Exception
 {
-
-    function __construct($message = '', $code = 0)
+    function __construct(array $errorCode = [])
     {
+        $code = isset($errorCode['code']) ? $errorCode['code'] : CommonErrorCode::$errorCode['code'];
+        $message = isset($errorCode['message']) ? $errorCode['message'] : CommonErrorCode::$errorCode['message'];
+
         parent::__construct($message, $code);
     }
 }

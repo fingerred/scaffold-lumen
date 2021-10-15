@@ -100,6 +100,12 @@ class ResponseData
             'code' => $error['code'],
             'message' => $error['message']
         ];
+
+        // 若保持响应带data对象使用
+        if (isset($error['data'])) {
+            $data['data'] = $error['data'];
+        }
+
         // 如果有自定义消息，则覆盖预置消息
         if ('' !== $message) {
             $data['message'] = $message;

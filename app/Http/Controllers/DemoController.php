@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /**
  * Create by Red.jiang in 10/15/21 at 4:49 PM
@@ -9,12 +8,30 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-
+use App\Functions\ErrorCode\CommonErrorCode;
 use App\Utils\ExportUtil;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class DemoController
 {
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function returnSuccess()
+    {
+        return successWithData();
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Exception
+     */
+    public function returnError()
+    {
+        return errorWithData(CommonErrorCode::$errorCode);
+    }
+
     /**
      * 导出excel
      *

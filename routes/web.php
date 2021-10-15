@@ -35,5 +35,7 @@ $router->get('/', function () use ($router) {
 $router->get("/health", "Controller@health");
 
 $router->group(['prefix' => 'demo'], function () use ($router) {
+    $router->get('returnSuccess', 'DemoController@returnSuccess');
+    $router->get('returnError', 'DemoController@returnError');
     $router->get('export', 'DemoController@export');
 });

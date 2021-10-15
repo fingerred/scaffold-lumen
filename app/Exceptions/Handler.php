@@ -74,7 +74,7 @@ class Handler extends ExceptionHandler
                 'trace' => $e->getTraceAsString()
             ]);
 
-            return response()->json($result);
+            return response()->json($result, 500);
         }
 
         return parent::render($request, $e);
