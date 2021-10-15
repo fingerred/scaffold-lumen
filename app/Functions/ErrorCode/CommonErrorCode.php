@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Email redmadfinger@gmail.com
  */
 
-namespace App\Functions;
+namespace App\Functions\ErrorCode;
 
 class CommonErrorCode
 {
