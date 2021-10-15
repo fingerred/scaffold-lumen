@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -49,6 +50,33 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        return $this->handle($request, $exception);
+    }
+
+    /**
+     * @param $request
+     * @param Throwable $e
+     *
+     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     *
+     * @throws Throwable
+     */
+    public function handle($request, Throwable $e){
+        if($e instanceof ApiException) {
+            $result = [
+                "code"       => $e->getCode(),
+                "message"    => $e->getMessage(),
+            ];
+
+            Log::error("ApiException: ", [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return response()->json($result);
+        }
+
+        return parent::render($request, $e);
     }
 }

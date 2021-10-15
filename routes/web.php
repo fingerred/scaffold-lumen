@@ -14,5 +14,26 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    $email = base64_encode('redmadfinger@gmail.com');
+
+    return "
+<div style='text-align: center; margin-top: 10px; color: #999'>
+<xmp>
+ _____   _   __   _   _____   _____   _____         _____    _____   _____
+|  ___| | | |  \ | | /  ___| | ____| |  _  \       |  _  \  | ____| |  _  \\
+| |__   | | |   \| | | |     | |__   | |_| |       | |_| |  | |__   | | | |
+|  __|  | | | |\   | | |  _  |  __|  |  _  /       |  _  /  |  __|  | | | |
+| |     | | | | \  | | |_| | | |___  | | \ \       | | \ \  | |___  | |_| |
+|_|     |_| |_|  \_| \_____/ |_____| |_|  \_\      |_|  \_\ |_____| |_____/
+
+</xmp>
+    <p style='color: gray'><small>Email: {$email}</small></p>
+</div>
+";
+});
+
+$router->get("/health", "Controller@health");
+
+$router->group(['prefix' => 'demo'], function () use ($router) {
+    $router->get('export', 'DemoController@export');
 });
